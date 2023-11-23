@@ -6,8 +6,6 @@ let now_playing_movies = document.querySelector(".movies");
 
 headerCreate(header);
 
-getMovieData("/movie/now_playing")
-.then((res) => {
-  console.log(res.data.results);
-    reload_movies(res.data.results, now_playing_movies);
+getMovieData("/movie/now_playing").then((res) => {
+  reload_movies(res.data.results, now_playing_movies);
 });
