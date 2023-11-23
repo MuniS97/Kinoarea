@@ -1,14 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="public/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Kinoarea</title>
+    <link rel="stylesheet" href="./style.scss" />
+    <script type="module" async src="./modules/guardian.js"></script>
   </head>
   <body>
-    
-    
+    <header class="container"></header>
+  <main class="container">
+    <section class="sec1">
+      <div class="genres">
+        <h1>Сейчас в кино</h1>
+        <div></div>
+        <nav>
+          <p class="act_txt">Все</p>
+          <p>Боевики</p>
+          <p>Приключения</p>
+          <p>Комедии</p>
+          <p>Фантастика</p>
+          <p>Триллеры</p>
+          <p>Драма</p>
+        </nav>
+      </div>
+      <div class="movies">
+        
+      </div>
+      <button data-count="not-all" class="more">Все новинки</button>
+    </section>
+
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>
