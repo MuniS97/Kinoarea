@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../public/logo.svg" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./login.scss" />
+    <link rel="stylesheet" href="../../style.scss" />
+  </head>
+  <body>
+    <div class="container">
+      <form name="login">
+        <h2 class="title">Войти</h2>
+        <input name="email" type="email" placeholder="Почта" />
+        <input name="password" type="password" placeholder="Ваш пароль" />
+        <button type="submit">Войти</button>
+        <a href="/pages/signUp/"
+          ><button type="button">Зарегистрироваться</button></a
+        >
+        <a href="/pages/restorePassword/">Восстановить пароль</a>
+        <div class="accaunts">
+          <a href="#"><img src="../../public/img/VK.png" alt="social_acc" /></a>
+          <a href="#"
+            ><img src="../../public/img/Facebook.png" alt="social_acc"
+          /></a>
+          <a href="#"
+            ><img src="../../public/img/Googke.png" alt="social_acc"
+          /></a>
+          <a href="#"
+            ><img src="../../public/img/Twitter.png" alt="social_acc"
+          /></a>
+        </div>
+      </form>
+    </div>
+
+    <script type="module" src="./login.js"></script>
+  </body>
+</html>
