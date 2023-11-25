@@ -45,3 +45,7 @@ export const getMovieData = async (path) => {
     console.log(e);
   }
 };
+
+export const setTrailers = (video, place) => {
+  place.src = "https://www.youtube.com/embed/" + video.key;
+};
