@@ -40,7 +40,12 @@ Promise.all([
     genres.data.genres,
     mainBg
   );
-  reload_movies2(upcoming.data.results, upcomingPlace, genres.data.genres, mainBg);
+  reload_movies2(
+    upcoming.data.results,
+    upcomingPlace,
+    genres.data.genres,
+    mainBg
+  );
 });
 
 btnShowAll.onclick = () => {
@@ -55,16 +60,12 @@ like_dislike.forEach((btn) => {
 });
 
 new Swiper(".mySwiper", {
-  slidesPerView: 3,
+  slidesPerView: 4,
   spaceBetween: 30,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
 });
 
 new Swiper(".mySwiper", {
-  slidesPerView: 3,
+  slidesPerView: 4,
   spaceBetween: 30,
   freeMode: true,
 });
