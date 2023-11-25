@@ -540,21 +540,108 @@ main {
         }
       }
     }
-  }
-  .bottom {
-    width: 100%;
-    min-height: 500px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
-    div {
+    .bottom {
       width: 100%;
-      height: 500px;
-      border-radius: 14px;
-      background-color: #6d717d;
+      min-height: 500px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: auto;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      div {
+        width: 100%;
+        height: 500px;
+        border-radius: 14px;
+        background-color: #6d717d;
+      }
+    }
+  }
+  .sec4 {
+    margin-bottom: 100px;
+    .top {
+      display: flex;
+      justify-content: start;
+      align-items: start;
+      .title {
+        color: #fff;
+        font-size: 65px;
+        font-weight: 900;
+      }
+    }
+    .swiper {
+      width: 100%;
+      height: 100%;
+      min-height: 500px;
+      .swiper-slide {
+        margin-bottom: 40px;
+        height: 100%;
+        div {
+          width: 100%;
+          text-align: left;
+          position: relative;
+          img {
+            width: 100%;
+            height: 90%;
+            border-radius: 14px;
+          }
+          .ratingBlock {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 62px;
+            height: 33px;
+            border-radius: 5px;
+            background: #89cb36;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .rating {
+              color: #fff;
+              font-size: 18px;
+              font-weight: 700;
+            }
+          }
+          .title {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+          }
+          .genre {
+            color: #f2f60f;
+            font-size: 15px;
+            font-weight: 400;
+          }
+          .hoverBlock {
+            z-index: 10;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(54, 87, 203, 0.65);
+            opacity: 0.9;
+            height: 95%;
+            border-radius: 14px;
+            justify-content: center;
+            align-items: center;
+            button {
+              width: 224px;
+              height: 71px;
+              border-radius: 10px;
+              background: #fff;
+              box-shadow: 0 0 5px white;
+              border: none;
+              &:hover {
+                opacity: 0.9;
+              }
+              &:active {
+                box-shadow: 0 2px 5px white;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

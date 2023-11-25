@@ -183,7 +183,7 @@ export function genre_types(arr, place) {
   }
 }
 
-export function reload_popular(arr, place, genres, bg) {
+export function reload_movies2(arr, place, genres, bg) {
   place.innerHTML = "";
   for (let idx = 0; idx < 15; idx++) {
     let mainBlock = document.createElement("div");
