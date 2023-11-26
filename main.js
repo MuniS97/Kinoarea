@@ -1,10 +1,5 @@
 import { getMovieData } from "./modules/helpers";
-import {
-  genre_types,
-  header_create,
-  reload_movies,
-  reload_movies2,
-} from "./modules/ui";
+import { genre_types, header_create, reload_movies } from "./modules/ui";
 
 let header = document.querySelector("header");
 let moviePlace = document.querySelector(".movies");
@@ -26,25 +21,27 @@ Promise.all([
   console.log(movies.data.results);
   // console.log(genres.data.genres);
   // console.log(popular.data.results);
-  genre_types(genres.data.genres, genresPlace);
+  genre_types(genres.data.genres.slice(0, 5), genresPlace);
   reload_movies(
-    movies.data.results,
+    movies.data.results.slice(0, 8),
     moviePlace,
     genres.data.genres,
     mainBg,
     true
   );
-  reload_movies2(
+  reload_movies(
     popular.data.results,
     popularMovies,
     genres.data.genres,
-    mainBg
+    mainBg,
+    false
   );
-  reload_movies2(
+  reload_movies(
     upcoming.data.results,
     upcomingPlace,
     genres.data.genres,
-    mainBg
+    mainBg,
+    false
   );
 });
 
@@ -60,12 +57,27 @@ like_dislike.forEach((btn) => {
 });
 
 new Swiper(".mySwiper", {
-  slidesPerView: 4,
-  spaceBetween: 30,
+  slidesPerView: 5,
+  spaceBetween: 20,
+  pagination: {
+    el: ".swiper-pagination",
+    type: "fraction",
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
 });
 
 new Swiper(".mySwiper", {
-  slidesPerView: 4,
-  spaceBetween: 30,
-  freeMode: true,
+  slidesPerView: 5,
+  spaceBetween: 20,
+  pagination: {
+    el: ".swiper-pagination",
+    type: "fraction",
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
 });

@@ -286,6 +286,7 @@ main {
     }
   }
   .btn-show-all {
+    cursor: pointer;
     margin: 50px 0;
     width: 200px;
     height: 71px;
@@ -435,6 +436,7 @@ main {
       .swiper {
         width: 100%;
         height: 100%;
+        position: relative;
         .swiper-slide {
           margin-bottom: 40px;
           height: 100%;
@@ -504,6 +506,38 @@ main {
             }
           }
         }
+        .swiper-button-next {
+          width: 25px;
+          color: white;
+          position: absolute;
+          bottom: -50%;
+          right: 45%;
+          &::after {
+            width: 25px;
+            position: absolute;
+            bottom: -200px;
+          }
+        }
+        .swiper-button-prev {
+          width: 25px;
+          color: white;
+          position: absolute;
+          bottom: -100px;
+          left: 45%;
+          &::after {
+            width: 25px;
+            position: absolute;
+            bottom: -200px;
+          }
+        }
+        .swiper-pagination {
+          z-index: -1;
+          position: absolute;
+          bottom: 25px;
+          color: #fff;
+          font-size: 20px;
+          font-weight: 500;
+        }
       }
     }
   }
@@ -557,17 +591,16 @@ main {
   }
   .sec4 {
     margin-bottom: 100px;
-    .top {
-      display: flex;
-      justify-content: start;
-      align-items: start;
-      .title {
-        color: #fff;
-        font-size: 65px;
-        font-weight: 900;
-      }
-    }
     .swiper {
+      .top {
+        text-align: left;
+        .title {
+          color: #fff;
+          font-size: 65px;
+          font-weight: 900;
+        }
+      }
+      position: relative;
       width: 100%;
       height: 100%;
       .swiper-slide {
@@ -638,6 +671,39 @@ main {
             }
           }
         }
+      }
+      .swiper-button-next {
+        color: white;
+        width: 25px;
+        z-index: 2;
+        position: absolute;
+        top: 55px;
+        right: 5%;
+        &::after {
+          position: absolute;
+          top: 0;
+        }
+      }
+      .swiper-button-prev {
+        color: white;
+        width: 25px;
+        z-index: 2;
+        position: absolute;
+        top: 55px;
+        left: 85%;
+        &::after {
+          position: absolute;
+          top: 0;
+        }
+      }
+      .swiper-pagination {
+        z-index: -1;
+        position: absolute;
+        top: 45px;
+        left: 485px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
       }
     }
   }
