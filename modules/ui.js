@@ -147,16 +147,6 @@ export function reload_movies(arr, place, genres, bg, plite) {
       block.onmouseleave = () => {
         hoverBg.classList.remove("flex");
       };
-
-      // hoverBg.onclick = () => {
-      //   let iframe = document.querySelector("#mainFrame");
-      //   let title = document.querySelector(".sec1 .bottom .left .title");
-      //   let id = item.id;
-      //   getMovieData(`/movie/${id}/videos`).then((res) =>
-      //     setTrailers(res.data.results[0], iframe)
-      //   );
-      //   title.innerHTML = item.title;
-      // };
       hoverBg.onclick = () => {
         location.assign(`../pages/aboutMovie?movie_id=${item.id}`);
       };
@@ -183,3 +173,103 @@ export function genre_types(arr, place) {
     a.append(p);
   }
 }
+
+export function btns_switch(arr) {
+  let choseGenre = 0;
+  arr.forEach((genre, idx) => {
+    genre.onclick = () => {
+      arr[choseGenre].classList.remove("chose");
+      arr[idx].classList.add("chose");
+      choseGenre = idx;
+    };
+  });
+}
+
+export const topMovies = (object, place) => {
+  let div = document.createElement("div");
+  let img = document.createElement("img");
+  let inf_div = document.createElement("div");
+  let title = document.createElement("h3");
+  let revenue = document.createElement("p");
+  let budget = document.createElement("p");
+
+  revenue.classList.add("gold");
+
+  img.src = "https://image.tmdb.org/t/p/original" + object.poster_path;
+  title.innerHTML = object.title;
+  revenue.innerHTML = `Сбор: ${object.revenue}`;
+  budget.innerHTML = `Бюджет: ${object.budget}`;
+
+  place.append(div);
+  div.append(img, inf_div);
+  inf_div.append(title, revenue, budget);
+};
+
+export const movieInf = (movie, place) => {
+  place.innerHTML = "";
+
+  let topBlock = document.createElement("div");
+  let img = document.createElement("img");
+  let topInfBlock = document.createElement("div");
+  let way = document.createElement("p");
+  let title = document.createElement("h1");
+  let origTitle = document.createElement("h2");
+  let rating = document.createElement("p");
+  let desc = document.createElement("p");
+  let infBottomBlock = document.createElement("div");
+  let btn = document.createElement("button");
+  let socials = document.createElement("div");
+  let img1 = document.createElement("img");
+  let img2 = document.createElement("img");
+  let img3 = document.createElement("img");
+  let img4 = document.createElement("img");
+
+  topBlock.classList.add("topBlock");
+  topInfBlock.classList.add("topInfBlock");
+  way.classList.add("way");
+  title.classList.add("title");
+  origTitle.classList.add("origTitle");
+  rating.classList.add("rating");
+  desc.classList.add("desc");
+  infBottomBlock.classList.add("infBottomBlock");
+  socials.classList.add("socials");
+
+  img.src = "https://image.tmdb.org/t/p/original" + movie.poster_path;
+  way.innerHTML = `Главная > Фильмы > <span>${movie.title}</span>`;
+  title.innerHTML = movie.title;
+  origTitle.innerHTML = movie.original_title;
+  rating.innerHTML = `Рейтинг : ${movie.vote_average}`;
+  desc.innerHTML = movie.overview;
+  btn.innerHTML = "Смотреть трейлер";
+  img1.src = "/public/img/headerLeft (1).svg";
+  img2.src = "/public/img/headerLeft (2).svg";
+  img3.src = "/public/img/headerLeft (3).svg";
+  img4.src = "/public/img/headerLeft (4).svg";
+
+  place.append(topBlock);
+  topBlock.append(img, topInfBlock);
+  topInfBlock.append(way, title, origTitle, rating, desc, infBottomBlock);
+  infBottomBlock.append(btn, socials);
+  socials.append(img1, img2, img3, img4);
+};
+
+export const trailers = (arr, place) => {
+  place.innerHTML = "";
+  for (let item of arr) {
+    let img = document.createElement("img");
+
+    img.src = "https://image.tmdb.org/t/p/original" + item.poster_path;
+
+    img.onclick = () => {
+      let iframe = document.querySelector("#mainFrame");
+      let title = document.querySelector(".sec1 .bottom .left .title");
+      let id = item.id;
+      getMovieData(`/movie/${id}/videos`).then((res) =>
+        setTrailers(res.data.results[0], iframe)
+      );
+      title.innerHTML = item.title;
+    };
+
+    place.append(img);
+  }
+};
