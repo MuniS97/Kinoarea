@@ -205,7 +205,7 @@ export const topMovies = (object, place) => {
   inf_div.append(title, revenue, budget);
 };
 
-export const movieInf = (movie, place) => {
+export const movieInf = (movie, place, bg) => {
   place.innerHTML = "";
 
   let topBlock = document.createElement("div");
@@ -224,6 +224,8 @@ export const movieInf = (movie, place) => {
   let img3 = document.createElement("img");
   let img4 = document.createElement("img");
 
+  bg.style.backgroundImage =
+    "url(https://image.tmdb.org/t/p/original" + movie.backdrop_path + ")";
   topBlock.classList.add("topBlock");
   topInfBlock.classList.add("topInfBlock");
   way.classList.add("way");
