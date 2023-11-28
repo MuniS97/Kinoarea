@@ -60,7 +60,6 @@ Promise.all([
   //         name.onclick = () => {
   //           if ((genre.name = name.innerHTML)) {
   //             if ((id = genre.id)) {
-
   //             }
   //           }
   //         };
