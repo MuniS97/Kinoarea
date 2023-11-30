@@ -37,7 +37,7 @@ export function header_create(place) {
           ><div class="search">
             <img src="/public/img/headerRight.svg" alt="search_icon" /></div
         ></a>
-        <button class="btn-donate">Войти</button>
+       <a href="/pages/login/"><button class="btn-donate">Войти</button></a>
       </div>
       `;
 }
@@ -86,14 +86,6 @@ export function reload_movies(arr, place, genres, bg, plite) {
         hoverBg.classList.remove("flex");
       };
 
-      // img.onclick = () => {
-      //   console.log(click);
-      //   let iframe = document.querySelector("#mainFrame");
-      //   let id = item.id;
-      //   getMovieData(`/movie/${id}/videos`).then((res) =>
-      //     setTrailers(res.data.results[0], iframe)
-      //   );
-      // };
       hoverBg.onclick = () => {
         location.assign(`../pages/aboutMovie/?movie_id=${item.id}`);
       };
@@ -147,8 +139,9 @@ export function reload_movies(arr, place, genres, bg, plite) {
       block.onmouseleave = () => {
         hoverBg.classList.remove("flex");
       };
+
       hoverBg.onclick = () => {
-        location.assign(`../pages/aboutMovie?movie_id=${item.id}`);
+        location.assign(`../pages/aboutMovie/?movie_id=${item.id}`);
       };
 
       place.append(mainBlock);
@@ -205,7 +198,7 @@ export const topMovies = (object, place) => {
   inf_div.append(title, revenue, budget);
 };
 
-export const movieInf = (movie, place) => {
+export const movieInf = (movie, place, bg) => {
   place.innerHTML = "";
 
   let topBlock = document.createElement("div");
@@ -224,6 +217,8 @@ export const movieInf = (movie, place) => {
   let img3 = document.createElement("img");
   let img4 = document.createElement("img");
 
+  bg.style.backgroundImage =
+    "url(https://image.tmdb.org/t/p/original" + movie.backdrop_path + ")";
   topBlock.classList.add("topBlock");
   topInfBlock.classList.add("topInfBlock");
   way.classList.add("way");
@@ -258,7 +253,7 @@ export const trailers = (arr, place) => {
   for (let item of arr) {
     let img = document.createElement("img");
 
-    img.src = "https://image.tmdb.org/t/p/original" + item.poster_path;
+    img.src = "https://image.tmdb.org/t/p/original" + item.backdrop_path;
 
     img.onclick = () => {
       let iframe = document.querySelector("#mainFrame");
@@ -271,5 +266,83 @@ export const trailers = (arr, place) => {
     };
 
     place.append(img);
+  }
+};
+
+export const search_reload_movies = (arr, place, genres) => {
+  place.innerHTML = "";
+  for (let item of arr) {
+    let block = document.createElement("div");
+    let left = document.createElement("div");
+    let img = document.createElement("img");
+    let leftInf = document.createElement("div");
+    let title = document.createElement("h3");
+    let originTitle = document.createElement("p");
+    let genresP = document.createElement("p");
+    let right = document.createElement("div");
+    let rating = document.createElement("p");
+    let genreTitles = [];
+
+    for (let id of item.genre_ids) {
+      for (let genre of genres) {
+        if (id === genre.id) {
+          genreTitles.push(genre.name);
+        }
+      }
+    }
+
+    left.classList.add("left");
+    leftInf.classList.add("leftInf");
+    genresP.classList.add("genres");
+    right.classList.add("right");
+
+    img.src = "https://image.tmdb.org/t/p/original" + item.poster_path;
+    title.innerHTML = item.title || "Movie";
+    originTitle.innerHTML = item.original_title || "None";
+    genresP.innerHTML = genreTitles.join(", ");
+    rating.innerHTML = item.vote_average;
+
+    place.append(block);
+    block.append(left, right);
+    left.append(img, leftInf);
+    leftInf.append(title, originTitle, genresP);
+    right.append(rating);
+
+    block.onclick = () => {
+      location.assign(`../pages/aboutMovie/?movie_id=${item.id}`);
+    };
+  }
+};
+
+export const search_reload_actors = (arr, place) => {
+  place.innerHTML = "";
+  for (let item of arr) {
+    let block = document.createElement("div");
+    let left = document.createElement("div");
+    let img = document.createElement("img");
+    let leftInf = document.createElement("div");
+    let title = document.createElement("h3");
+    let originTitle = document.createElement("p");
+    let desc = document.createElement("p");
+    let right = document.createElement("div");
+    let rating = document.createElement("p");
+
+    left.classList.add("left");
+    leftInf.classList.add("leftInf");
+    desc.classList.add("genres");
+    right.classList.add("right");
+
+    img.src = "https://image.tmdb.org/t/p/original" + item.profile_path;
+    title.innerHTML = item.name || "Actor";
+    originTitle.innerHTML = item.original_name || "None";
+
+    desc.innerHTML = item.known_for_department;
+    rating.innerHTML = item.popularity;
+
+    place.append(block);
+    block.append(left, right);
+    left.append(img, leftInf);
+    leftInf.append(title, originTitle, desc);
+    right.append(rating);
   }
 };
