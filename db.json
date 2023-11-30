@@ -6,6 +6,13 @@
       "email": "tursunovmunis141@gmail.com",
       "password": "1234",
       "id": 1
+    },
+    {
+      "name": "Munis",
+      "surname": "Tursunov",
+      "email": "tursunovmunis142@gmail.com",
+      "password": "2244",
+      "id": 2
     }
   ]
 }

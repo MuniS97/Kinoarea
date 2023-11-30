@@ -10,7 +10,6 @@ main {
         height: 500px;
       }
       .topInfBlock {
-        padding: 50px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -18,11 +17,11 @@ main {
         gap: 10px;
         text-align: left;
         .way {
-          color: #4f5b7c;
+          color: white;
           font-size: 16px;
           font-weight: 500;
           span {
-            color: white;
+            color: gold;
           }
         }
         .title {
@@ -59,6 +58,9 @@ main {
             border: 2px solid #fff;
             background: none;
             box-shadow: 0 0 5px white;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
             &:hover {
               opacity: 0.9;
             }
