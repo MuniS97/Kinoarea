@@ -168,7 +168,9 @@ function saveInput() {
       genres.data.genres
     );
   });
-  getMovieData(`/search/person?query=${searchInp.value}&page=1`).then((res) => {
+  getMovieData(
+    `/search/person?query=${searchInp.value}&include_adult=false&page=1`
+  ).then((res) => {
     search_reload_actors(res.data.results, searchPlaceActors);
   });
 }
