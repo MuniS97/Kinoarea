@@ -71,6 +71,9 @@ export function reload_movies(arr, place, genres, bg, plite) {
       genre.innerHTML = genreTitles.join(", ");
       rating.innerHTML = item.vote_average;
 
+      bg.style.backgroundImage =
+        "url(https://image.tmdb.org/t/p/original" + arr[0].backdrop_path + ")";
+
       let hoverBg = document.createElement("div");
       let hoverBtn = document.createElement("button");
 
@@ -124,6 +127,8 @@ export function reload_movies(arr, place, genres, bg, plite) {
       name.innerHTML = item.title;
       genre.innerHTML = genreTitles.join(", ");
       rating.innerHTML = item.vote_average;
+      bg.style.backgroundImage =
+        "url(https://image.tmdb.org/t/p/original" + arr[0].backdrop_path + ")";
 
       let hoverBg = document.createElement("div");
       let hoverBtn = document.createElement("button");
@@ -161,6 +166,7 @@ export function genre_types(arr, place) {
 
     a.href = "#";
     p.innerHTML = item.name;
+    a.dataset.genreId = item.id;
 
     place.append(a);
     a.append(p);
@@ -169,8 +175,8 @@ export function genre_types(arr, place) {
 
 export function btns_switch(arr) {
   let choseGenre = 0;
-  arr.forEach((genre, idx) => {
-    genre.onclick = () => {
+  arr.forEach((item, idx) => {
+    item.onclick = () => {
       arr[choseGenre].classList.remove("chose");
       arr[idx].classList.add("chose");
       choseGenre = idx;
@@ -251,11 +257,19 @@ export const movieInf = (movie, place, bg) => {
 export const trailers = (arr, place) => {
   place.innerHTML = "";
   for (let item of arr) {
+    let block = document.createElement("div");
+    let imgBlock = document.createElement("div");
     let img = document.createElement("img");
+    let icon = document.createElement("img");
+    let title = document.createElement("p");
+
+    icon.classList.add("icon");
 
     img.src = "https://image.tmdb.org/t/p/original" + item.backdrop_path;
+    icon.src = "/public/img/trailersArrow.svg";
+    title.innerHTML = item.title;
 
-    img.onclick = () => {
+    icon.onclick = () => {
       let iframe = document.querySelector("#mainFrame");
       let title = document.querySelector(".sec1 .bottom .left .title");
       let id = item.id;
@@ -265,7 +279,9 @@ export const trailers = (arr, place) => {
       title.innerHTML = item.title;
     };
 
-    place.append(img);
+    place.append(block);
+    block.append(imgBlock, title);
+    imgBlock.append(img, icon);
   }
 };
 
@@ -296,7 +312,10 @@ export const search_reload_movies = (arr, place, genres) => {
     genresP.classList.add("genres");
     right.classList.add("right");
 
-    img.src = "https://image.tmdb.org/t/p/original" + item.poster_path;
+    let profile_path = item.poster_path
+      ? item.poster_path
+      : "/public/img/person.avif";
+    img.src = "https://image.tmdb.org/t/p/original" + profile_path;
     title.innerHTML = item.title || "Movie";
     originTitle.innerHTML = item.original_title || "None";
     genresP.innerHTML = genreTitles.join(", ");

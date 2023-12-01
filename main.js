@@ -1,4 +1,4 @@
-import { getData, getMovieData } from "./modules/helpers";
+import { getMovieData } from "./modules/helpers";
 import {
   btns_switch,
   genre_types,
@@ -30,6 +30,7 @@ Promise.all([
   getMovieData("/movie/upcoming?language=ru"),
 ]).then(([movies, genres, popular, upcoming]) => {
   genre_types(genres.data.genres, genresPlace);
+
   reload_movies(
     movies.data.results.slice(0, 10),
     moviePlace,
@@ -51,8 +52,41 @@ Promise.all([
     mainBg,
     false
   );
-  const genres_types = document.querySelectorAll(".genres a");
-  btns_switch(genres_types);
+  let genres_types = document.querySelectorAll(".genres a");
+  let chosedGenre = [];
+  genres_types.forEach((item) => {
+    item.onclick = () => {
+      if (item.classList.contains("chose")) {
+        item.classList.remove("chose");
+        let index = chosedGenre.indexOf(item.dataset.genreId);
+        if (index !== -1) {
+          chosedGenre.splice(index, 1);
+        }
+      } else {
+        item.classList.add("chose");
+        chosedGenre.push(item.dataset.genreId);
+      }
+      let indexes = chosedGenre.join(",");
+      getMovieData(
+        "/discover/movie?with_genres=" + indexes + "&language=ru"
+      ).then((res) => {
+        reload_movies(
+          res.data.results.slice(0, 10),
+          moviePlace,
+          genres.data.genres,
+          mainBg,
+          true
+        );
+      });
+    };
+  });
+
+  let iframe = document.querySelector("#mainFrame");
+  let tralerTitle = document.querySelector("main .sec1 .bottom .left .title");
+  getMovieData(`/movie/${movies.data.results[0].id}/videos`).then((res) => {
+    iframe.src = "https://www.youtube.com/embed/" + res.data.results[0].key;
+    tralerTitle.innerHTML = res.data.results[0].name;
+  });
 });
 
 btnShowAll.onclick = () => {
