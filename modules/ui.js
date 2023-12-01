@@ -1,5 +1,6 @@
 import { getMovieData, setTrailers } from "./helpers";
 
+// header reload
 export function header_create(place) {
   place.innerHTML = `
   <div class="left">
@@ -33,7 +34,7 @@ export function header_create(place) {
         </nav>
       </div>
       <div class="right">
-        <a href="#"
+        <a id="search_btn" href="#"
           ><div class="search">
             <img src="/public/img/headerRight.svg" alt="search_icon" /></div
         ></a>
@@ -41,6 +42,8 @@ export function header_create(place) {
       </div>
       `;
 }
+
+// main movie reload
 export function reload_movies(arr, place, genres, bg, plite) {
   place.innerHTML = "";
   if (plite) {
@@ -158,6 +161,7 @@ export function reload_movies(arr, place, genres, bg, plite) {
   }
 }
 
+// genres reload
 export function genre_types(arr, place) {
   place.innerHTML = "";
   for (let item of arr) {
@@ -173,6 +177,7 @@ export function genre_types(arr, place) {
   }
 }
 
+// header pages switch
 export function btns_switch(arr) {
   let choseGenre = 0;
   arr.forEach((item, idx) => {
@@ -184,6 +189,7 @@ export function btns_switch(arr) {
   });
 }
 
+// top rated movies
 export const topMovies = (object, place) => {
   let div = document.createElement("div");
   let img = document.createElement("img");
@@ -204,6 +210,7 @@ export const topMovies = (object, place) => {
   inf_div.append(title, revenue, budget);
 };
 
+// page reload about chose movie
 export const movieInf = (movie, place, bg) => {
   place.innerHTML = "";
 
@@ -254,6 +261,7 @@ export const movieInf = (movie, place, bg) => {
   socials.append(img1, img2, img3, img4);
 };
 
+// min trailers function
 export const trailers = (arr, place) => {
   place.innerHTML = "";
   for (let item of arr) {
@@ -285,6 +293,7 @@ export const trailers = (arr, place) => {
   }
 };
 
+// search movies reload
 export const search_reload_movies = (arr, place, genres) => {
   place.innerHTML = "";
   for (let item of arr) {
@@ -312,9 +321,6 @@ export const search_reload_movies = (arr, place, genres) => {
     genresP.classList.add("genres");
     right.classList.add("right");
 
-    let profile_path = item.poster_path
-      ? item.poster_path
-      : "/public/img/person.avif";
     img.src = "https://image.tmdb.org/t/p/original" + profile_path;
     title.innerHTML = item.title || "Movie";
     originTitle.innerHTML = item.original_title || "None";
@@ -333,6 +339,7 @@ export const search_reload_movies = (arr, place, genres) => {
   }
 };
 
+// search actors reload
 export const search_reload_actors = (arr, place) => {
   place.innerHTML = "";
   for (let item of arr) {
@@ -364,4 +371,83 @@ export const search_reload_actors = (arr, place) => {
     leftInf.append(title, originTitle, desc);
     right.append(rating);
   }
+};
+
+export const top_two_actors_reload = (object, place, details, status) => {
+  place.innerHTML = "";
+
+  let actor_status = document.createElement("p");
+  let actor_inf = document.createElement("div");
+  let name = document.createElement("h3");
+  let original_name = document.createElement("p");
+  let age = document.createElement("p");
+
+  actor_status.classList.add("status");
+  name.classList.add("name");
+  original_name.classList.add("original_name");
+  age.classList.add("age");
+
+  place.style.backgroundImage =
+    "url(https://image.tmdb.org/t/p/original" + object.profile_path + ")";
+  actor_status.innerHTML = status;
+  name.innerHTML = object.name;
+  original_name.innerHTML = object.original_name;
+  let actor_age = details.birthday
+    ? new Date().getFullYear() - details.birthday.split("-")[0]
+    : "?";
+  age.innerHTML = actor_age + " лет";
+
+  place.append(actor_status, actor_inf);
+  actor_inf.append(name, original_name, age);
+};
+
+export const other_actors_reload = (arr, place, details, status) => {
+  place.innerHTML = "";
+  for (let idx = 3; idx < arr.length; idx++) {
+    let block = document.createElement("div");
+    let left = document.createElement("div");
+    let name = document.createElement("h3");
+    let original_name = document.createElement("h5");
+    let age = document.createElement("p");
+    let actor_status = document.createElement("p");
+
+    actor_status.classList.add("status");
+    left.classList.add("left");
+
+    name.innerHTML = arr[idx].name;
+    original_name.innerHTML = arr[idx].original_name;
+    actor_status.innerHTML = status;
+    let actor_age = details[idx]
+      ? new Date().getFullYear() - details[idx].birthday.split("-")[0]
+      : "?";
+    age.innerHTML = actor_age + " лет";
+    actor_status.innerHTML = idx + "-й место";
+
+    place.append(block);
+    block.append(left, actor_status);
+    left.append(name, original_name, age);
+  }
+  // for (let item of arr) {
+  //   let block = document.createElement("div");
+  //   let left = document.createElement("div");
+  //   let name = document.createElement("h3");
+  //   let original_name = document.createElement("h5");
+  //   let age = document.createElement("p");
+  //   let actor_status = document.createElement("p");
+
+  //   actor_status.classList.add("status");
+  //   left.classList.add("left");
+
+  //   name.innerHTML = item.name;
+  //   original_name.innerHTML = item.original_name;
+  //   actor_status.innerHTML = status;
+  //   let actor_age = details[0].birthday
+  //     ? new Date().getFullYear() - details[0].birthday.split("-")[0]
+  //     : "?";
+  //   age.innerHTML = actor_age + " лет";
+
+  //   place.append(block);
+  //   block.append(left, actor_status);
+  //   left.append(name, original_name, age);
+  // }
 };
