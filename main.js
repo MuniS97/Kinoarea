@@ -256,6 +256,7 @@ searchInp.onkeyup = () => {
 let person_details = [];
 getMovieData("/person/popular?language=ru").then((res) => {
   if (res.status !== 200 && res.status !== 201) return;
+  console.log(res);
   getMovieData(`/person/${res.data.results[0].id}`).then((detail) => {
     if (detail.status !== 200 && detail.status !== 201) return;
     top_two_actors_reload(
