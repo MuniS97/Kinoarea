@@ -6,13 +6,192 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.scss" />
     <link rel="stylesheet" href="../../style.scss" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <header class="container"></header>
     <main class="container">
       <div class="mainBg"></div>
       <div class="movie"></div>
+      <section class="sec1">
+        <div class="btn">
+          <img src="../../public/img/sec1_like.svg" alt="" />
+        </div>
+        <div class="btn">
+          <img src="../../public/img/sec1_dislike.svg" alt="" />
+        </div>
+        <div class="rate">
+          <div></div>
+          <p>Рейтинг ожиданий 85%</p>
+        </div>
+        <div class="btn">
+          <img src="../../public/img/heart 1.svg" alt="" />
+        </div>
+        <p>В избранном у 37933 человек</p>
+      </section>
+      <section class="sec2">
+        <div class="top2"></div>
+        <div class="bottom2">
+          <div id="first"></div>
+          <div id="second"></div>
+          <div id="third">
+            <h3>Производство:</h3>
+            <div></div>
+          </div>
+          <div id="four">
+            <h3>Спецэффекты:</h3>
+            <div></div>
+          </div>
+        </div>
+      </section>
+      <section class="sec3">
+        <div class="top2">
+          <div class="title">В главных ролях:</div>
+          <div>
+            <p>Все актёры</p>
+            <img src="../../public/img/sec1.svg" alt="" />
+          </div>
+        </div>
+        <div id="movieActors"></div>
+      </section>
+      <section class="sec4">
+        <div class="top2">
+          <a href="#">Премьеры</a>
+          <a class="chose" href="#">Трейлеры</a>
+          <a href="#">Рецензии</a>
+          <a href="#">Студии</a>
+          <a href="#">Цитаты</a>
+          <a href="#">Сиквелы и приквелы</a>
+          <a href="#">Постеры</a>
+          <a href="#">Кадры</a>
+          <a href="#">Награды</a>
+        </div>
+        <div class="top">
+          <h2 class="title">Новые трейлеры</h2>
+          <a href="#"
+            ><div>
+              <p>Все трейлеры</p>
+              <img src="../../public/img/sec1.svg" alt="arrow" /></div
+          ></a>
+        </div>
+        <iframe id="mainFrame" width="100%" height="100%"></iframe>
+        <div class="bottom">
+          <div class="left">
+            <h3 id="trailerTitle" class="title"></h3>
+            <div class="socials">
+              <a href="#"
+                ><img src="../../public/img/headerLeft (1).svg" alt="social"
+              /></a>
+              <a href="#"
+                ><img src="../../public/img/headerLeft (3).svg" alt="social"
+              /></a>
+              <a href="#"
+                ><img src="../../public/img/headerLeft (5).svg" alt="social"
+              /></a>
+              <a href="#"
+                ><img src="../../public/img/headerLeft (6).svg" alt="social"
+              /></a>
+            </div>
+          </div>
+          <div class="right">
+            <div>
+              <img src="../../public/img/sec1_like.svg" alt="like" />
+            </div>
+            <div>
+              <img src="../../public/img/sec1_dislike.svg" alt="dislike" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="sec5">
+        <div class="top2">
+          <h2 class="title">Постеры к фильму</h2>
+          <div>
+            <p>Все постеры</p>
+            <img src="../../public/img/sec1.svg" alt="" />
+          </div>
+        </div>
+        <div class="movieName"></div>
+        <div class="posters"></div>
+      </section>
+      <section class="section6">
+        <div class="top2">
+          <h2 class="title">Кадры из фильма</h2>
+          <div>
+            <p>Все постеры</p>
+            <img src="../../public/img/sec1.svg" alt="" />
+          </div>
+        </div>
+        <div class="posters"></div>
+      </section>
+      <section class="sec7">
+        <h2 class="title">Похожие фильмы</h2>
+        <div class="swiper mySwiper">
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-wrapper" id="sameMovies"></div>
+        </div>
+      </section>
+      <section class="sec6">
+        <div class="content">
+          <div class="top">
+            <img src="./public/logo.svg" alt="logo" />
+            <p>Kinoarea</p>
+          </div>
+          <div class="bottom">
+            <h2>Подпишитесь на E-mail рассылку</h2>
+            <p>
+              Если хотиет быть в курсе последних новостей и новинок кино -
+              <br />
+              заполните форму ниже и оформите бесплатную E-mail рассылку!
+            </p>
+            <form name="subs">
+              <div id="div-1">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Введите свой E-mail адрес"
+                />
+                <button>Подписаться</button>
+              </div>
+              <div id="div-2">
+                <input type="radio" />
+                <p>
+                  Соглашаюсь на условия <span>политики конфиденциальности</span>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
+    <footer>
+      <div class="socials">
+        <img src="../../public/img/headerLeft (1).svg" alt="social" />
+        <img src="../../public/img/headerLeft (3).svg" alt="social" />
+        <img src="../../public/img/headerLeft (5).svg" alt="social" />
+        <img src="../../public/img/headerLeft (6).svg" alt="social" />
+        <img src="../../public/img/youtube.svg" alt="social" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Афиша</a></li>
+          <li><a href="#">Новости</a></li>
+          <li><a href="#">Персоны</a></li>
+          <li><a href="#">Рейтинги</a></li>
+          <li><a href="#">Рецензии</a></li>
+          <li><a href="#">Каталог фильмов</a></li>
+        </ul>
+      </nav>
+      <p>2020 © Kinoarea. Все права защищены</p>
+      <a href="#">Политика конфиденциальности</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

@@ -9,12 +9,7 @@
   <body>
     <header class="container"></header>
     <main class="container">
-      <div
-        class="mainBg"
-        style="
-          background-image: url('https://image.tmdb.org/t/p/original/p9DKeXp6FPJtAQ1k13Z4zPWrCbN.jpg');
-        "
-      ></div>
+      <div class="mainBg"></div>
       <div class="top">
         <h1 class="title">Все новинки</h1>
         <div class="line"></div>
@@ -24,6 +19,30 @@
       <br />
       <div class="movies2"></div>
     </main>
+
+    <div class="searchModals">
+      <div class="bg"></div>
+      <div class="content">
+        <div class="top">
+          <img src="./public/logo.svg" alt="logo" />
+          <h2 class="title"><span>Kino</span>area</h2>
+        </div>
+        <div class="search">
+          <input type="text" placeholder="Название интересующихся фильмов" />
+          <div>
+            <a href="#"><img src="./public/img/search.svg" alt="settings" /></a>
+            <a id="search" href="#"
+              ><img src="./public/img/headerRight.svg" alt="search"
+            /></a>
+          </div>
+        </div>
+        <div>
+          <div class="answers"></div>
+          <div class="actors"></div>
+        </div>
+      </div>
+      <p class="off">&times;</p>
+    </div>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

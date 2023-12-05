@@ -278,14 +278,14 @@ getMovieData("/person/popular?language=ru").then((res) => {
     getMovieData(`/person/${person.id}`).then((detail) => {
       if (detail.status !== 200 && detail.status !== 201) return;
       person_details.push(detail.data);
-      if (Boolean(person_details.push(detail.data))) {
-        other_actors_reload(
-          res.data.results.slice(2),
-          other_actors,
-          person_details,
-          "?-й место"
-        );
-      }
+        if (Boolean(person_details.push(detail.data))) {
+          other_actors_reload(
+            res.data.results.slice(2),
+            other_actors,
+            person_details,
+            "?-й место"
+          );
+        }
     });
   });
 });
