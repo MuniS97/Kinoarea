@@ -10,13 +10,13 @@ export function header_create(place) {
             ><img src="/public/img/headerLeft (1).svg" alt="social"
           /></a>
           <a href="#"
-            ><img src="/public/img/headerLeft (2).svg" alt="social"
-          /></a>
-          <a href="#"
             ><img src="/public/img/headerLeft (3).svg" alt="social"
           /></a>
           <a href="#"
-            ><img src="/public/img/headerLeft (4).svg" alt="social"
+            ><img src="/public/img/headerLeft (5).svg" alt="social"
+          /></a>
+          <a href="#"
+            ><img src="/public/img/headerLeft (6).svg" alt="social"
           /></a>
         </div>
       </div>
@@ -149,7 +149,7 @@ export function reload_movies(arr, place, genres, bg, plite) {
       };
 
       hoverBg.onclick = () => {
-        location.assign(`../pages/aboutMovie/?movie_id=${item.id}`);
+        location.assign(`/pages/aboutMovie/?movie_id=${item.id}`);
       };
 
       place.append(mainBlock);
@@ -208,57 +208,6 @@ export const topMovies = (object, place) => {
   place.append(div);
   div.append(img, inf_div);
   inf_div.append(title, revenue, budget);
-};
-
-// page reload about chose movie
-export const movieInf = (movie, place, bg) => {
-  place.innerHTML = "";
-
-  let topBlock = document.createElement("div");
-  let img = document.createElement("img");
-  let topInfBlock = document.createElement("div");
-  let way = document.createElement("p");
-  let title = document.createElement("h1");
-  let origTitle = document.createElement("h2");
-  let rating = document.createElement("p");
-  let desc = document.createElement("p");
-  let infBottomBlock = document.createElement("div");
-  let btn = document.createElement("button");
-  let socials = document.createElement("div");
-  let img1 = document.createElement("img");
-  let img2 = document.createElement("img");
-  let img3 = document.createElement("img");
-  let img4 = document.createElement("img");
-
-  bg.style.backgroundImage =
-    "url(https://image.tmdb.org/t/p/original" + movie.backdrop_path + ")";
-  topBlock.classList.add("topBlock");
-  topInfBlock.classList.add("topInfBlock");
-  way.classList.add("way");
-  title.classList.add("title");
-  origTitle.classList.add("origTitle");
-  rating.classList.add("rating");
-  desc.classList.add("desc");
-  infBottomBlock.classList.add("infBottomBlock");
-  socials.classList.add("socials");
-
-  img.src = "https://image.tmdb.org/t/p/original" + movie.poster_path;
-  way.innerHTML = `Главная > Фильмы > <span>${movie.title}</span>`;
-  title.innerHTML = movie.title;
-  origTitle.innerHTML = movie.original_title;
-  rating.innerHTML = `Рейтинг : ${movie.vote_average}`;
-  desc.innerHTML = movie.overview;
-  btn.innerHTML = "Смотреть трейлер";
-  img1.src = "/public/img/headerLeft (1).svg";
-  img2.src = "/public/img/headerLeft (2).svg";
-  img3.src = "/public/img/headerLeft (3).svg";
-  img4.src = "/public/img/headerLeft (4).svg";
-
-  place.append(topBlock);
-  topBlock.append(img, topInfBlock);
-  topInfBlock.append(way, title, origTitle, rating, desc, infBottomBlock);
-  infBottomBlock.append(btn, socials);
-  socials.append(img1, img2, img3, img4);
 };
 
 // min trailers function
@@ -321,7 +270,7 @@ export const search_reload_movies = (arr, place, genres) => {
     genresP.classList.add("genres");
     right.classList.add("right");
 
-    img.src = "https://image.tmdb.org/t/p/original" + profile_path;
+    img.src = "https://image.tmdb.org/t/p/original" + poster_path;
     title.innerHTML = item.title || "Movie";
     originTitle.innerHTML = item.original_title || "None";
     genresP.innerHTML = genreTitles.join(", ");
@@ -427,27 +376,259 @@ export const other_actors_reload = (arr, place, details, status) => {
     block.append(left, actor_status);
     left.append(name, original_name, age);
   }
-  // for (let item of arr) {
-  //   let block = document.createElement("div");
-  //   let left = document.createElement("div");
-  //   let name = document.createElement("h3");
-  //   let original_name = document.createElement("h5");
-  //   let age = document.createElement("p");
-  //   let actor_status = document.createElement("p");
+};
 
-  //   actor_status.classList.add("status");
-  //   left.classList.add("left");
+// page reload about chose movie
+export const movieInf = (movie, place, bg) => {
+  place.innerHTML = "";
 
-  //   name.innerHTML = item.name;
-  //   original_name.innerHTML = item.original_name;
-  //   actor_status.innerHTML = status;
-  //   let actor_age = details[0].birthday
-  //     ? new Date().getFullYear() - details[0].birthday.split("-")[0]
-  //     : "?";
-  //   age.innerHTML = actor_age + " лет";
+  let topBlock = document.createElement("div");
+  let img = document.createElement("img");
+  let topInfBlock = document.createElement("div");
+  let way = document.createElement("p");
+  let title = document.createElement("h1");
+  let origTitle = document.createElement("h2");
+  let rating = document.createElement("p");
+  let desc = document.createElement("p");
+  let infBottomBlock = document.createElement("div");
+  let btn = document.createElement("button");
+  let socials = document.createElement("div");
+  let img1 = document.createElement("img");
+  let img2 = document.createElement("img");
+  let img3 = document.createElement("img");
+  let img4 = document.createElement("img");
 
-  //   place.append(block);
-  //   block.append(left, actor_status);
-  //   left.append(name, original_name, age);
-  // }
+  bg.style.backgroundImage =
+    "url(https://image.tmdb.org/t/p/original" + movie.backdrop_path + ")";
+  topBlock.classList.add("topBlock");
+  topInfBlock.classList.add("topInfBlock");
+  way.classList.add("way");
+  title.classList.add("title");
+  origTitle.classList.add("origTitle");
+  rating.classList.add("rating");
+  desc.classList.add("desc");
+  infBottomBlock.classList.add("infBottomBlock");
+  socials.classList.add("socials");
+
+  img.src = "https://image.tmdb.org/t/p/original" + movie.poster_path;
+  way.innerHTML = `Главная > Фильмы > <span>${movie.title}</span>`;
+  title.innerHTML = movie.title;
+  origTitle.innerHTML = movie.original_title;
+  rating.innerHTML = `Рейтинг : ${movie.vote_average}`;
+  desc.innerHTML = movie.overview;
+  btn.innerHTML = "Смотреть трейлер";
+  img1.src = "/public/img/headerLeft (1).svg";
+  img2.src = "/public/img/headerLeft (3).svg";
+  img3.src = "/public/img/headerLeft (5).svg";
+  img4.src = "/public/img/headerLeft (6).svg";
+
+  place.append(topBlock);
+  topBlock.append(img, topInfBlock);
+  topInfBlock.append(way, title, origTitle, rating, desc, infBottomBlock);
+  infBottomBlock.append(btn, socials);
+  socials.append(img1, img2, img3, img4);
+};
+
+export const aboutMovie = (object, place, credits) => {
+  place.innerHTML = "";
+  let div1 = document.createElement("div");
+  let title1 = document.createElement("p");
+  let div2 = document.createElement("div");
+  let title2 = document.createElement("p");
+  let div3 = document.createElement("div");
+  let title3 = document.createElement("p");
+  let div4 = document.createElement("div");
+  let title4 = document.createElement("p");
+  let div5 = document.createElement("div");
+  let title5 = document.createElement("p");
+  let div6 = document.createElement("div");
+  let title6 = document.createElement("p");
+  let div7 = document.createElement("div");
+  let title7 = document.createElement("p");
+  let div8 = document.createElement("div");
+  let title8 = document.createElement("p");
+  let div9 = document.createElement("div");
+  let title9 = document.createElement("p");
+  let div10 = document.createElement("div");
+  let title10 = document.createElement("p");
+  let div11 = document.createElement("div");
+  let title11 = document.createElement("p");
+  let div12 = document.createElement("div");
+  let title12 = document.createElement("p");
+  let div13 = document.createElement("div");
+  let title13 = document.createElement("p");
+  let div14 = document.createElement("div");
+  let title14 = document.createElement("p");
+  let div15 = document.createElement("div");
+  let title15 = document.createElement("p");
+  let div16 = document.createElement("div");
+  let title16 = document.createElement("p");
+
+  title1.innerHTML = "<b>Год: </b>" + object.release_date.split("-")[0] || "?";
+  title2.innerHTML = "<b>Художник: </b>" + credits[1].name || "?";
+  title3.innerHTML =
+    "<b>Страна: </b>" + object.production_countries[0].name || "?";
+  title4.innerHTML = "<b>Монтаж: </b>" + credits[0].name || "?";
+  title5.innerHTML = "<b>Слоган: </b>" + object.tagline || "?";
+  title6.innerHTML =
+    "<b>Жанр: </b>" +
+      object.genres[0].name +
+      ", " +
+      object.genres[1].name +
+      "..." || "?";
+  title7.innerHTML = "<b>Режиссер: </b>" + credits[2].name || "?";
+  title8.innerHTML = "<b>Сборы в мире: </b>" + object.revenue || "?";
+  title9.innerHTML =
+    "<b>Сценарий: </b>" + credits[3].name + ", " + credits[3].name || "?";
+  title10.innerHTML =
+    "<b>Премьера(мир): </b>" + object.release_date.split("-")[0] || "?";
+  title11.innerHTML =
+    "<b>Продюсер: </b>" + credits[5].name + ", " + credits[4].name || "?";
+  title12.innerHTML = "<b>Премьера(РФ): </b>" + "?" || "?";
+  title13.innerHTML = "<b>Оператор: </b>" + credits[6].name || "?";
+  title14.innerHTML = "<b>Возвраст: </b>" + "?" || "?";
+  title15.innerHTML = "<b>Композитор: </b>" + credits[7].name || "?";
+  title16.innerHTML = "<b>Время: </b>" + object.runtime + " сек" || "?";
+
+  place.append(
+    div1,
+    div2,
+    div3,
+    div4,
+    div5,
+    div6,
+    div7,
+    div8,
+    div9,
+    div10,
+    div11,
+    div12,
+    div13,
+    div14,
+    div15,
+    div16
+  );
+  div1.append(title1);
+  div2.append(title2);
+  div3.append(title3);
+  div4.append(title4);
+  div5.append(title5);
+  div6.append(title6);
+  div7.append(title7);
+  div8.append(title8);
+  div9.append(title9);
+  div10.append(title10);
+  div11.append(title11);
+  div12.append(title12);
+  div13.append(title13);
+  div14.append(title14);
+  div15.append(title15);
+  div16.append(title16);
+};
+
+export const aboutMovieCrew = (object, place, plite) => {
+  if (plite) {
+    let img = document.createElement("img");
+    let div = document.createElement("div");
+    let h4 = document.createElement("h4");
+    let p = document.createElement("p");
+    let h6 = document.createElement("h6");
+
+    img.src = "https://image.tmdb.org/t/p/original" + object.profile_path;
+    h4.innerHTML = object.name;
+    p.innerHTML = object.original_name;
+    h6.innerHTML = object.job;
+
+    place.append(img, div);
+    div.append(h4, p, h6);
+  } else {
+    let p = document.createElement("p");
+    p.innerHTML = object.name;
+    place.append(p);
+  }
+};
+
+export const aboutMovieActors = (arr, place) => {
+  place.innerHTML = "";
+  for (let item of arr) {
+    let block = document.createElement("div");
+    let img = document.createElement("img");
+    let name = document.createElement("h3");
+    let orig_name = document.createElement("p");
+    let movie_name = document.createElement("h4");
+
+    block.classList.add("actor_block");
+    img.src = "https://image.tmdb.org/t/p/original" + item.profile_path;
+    name.innerHTML = item.name;
+    orig_name.innerHTML = item.original_name;
+    movie_name.innerHTML = item.character;
+
+    place.append(block);
+    block.append(img, name, orig_name, movie_name);
+  }
+};
+
+export const aboutMoviePosters = (arr, place) => {
+  place.innerHTML = "";
+  for (let item of arr) {
+    let img = document.createElement("img");
+    img.src = "https://image.tmdb.org/t/p/original" + item.file_path;
+    place.append(img);
+  }
+};
+
+export const aboutMovieSameMovies = (arr, place, genres) => {
+  place.innerHTML = "";
+  for (let item of arr) {
+    let mainBlock = document.createElement("div");
+    let block = document.createElement("div");
+    let img = document.createElement("img");
+    let ratingBlock = document.createElement("div");
+    let rating = document.createElement("p");
+    let name = document.createElement("h4");
+    let genre = document.createElement("p");
+    let genreTitles = [];
+
+    for (let id of item.genre_ids) {
+      for (let genre of genres) {
+        if (id === genre.id) {
+          genreTitles.push(genre.name);
+        }
+      }
+    }
+
+    name.classList.add("title");
+    genre.classList.add("genre");
+    ratingBlock.classList.add("ratingBlock");
+    rating.classList.add("rating");
+    mainBlock.classList.add("swiper-slide");
+
+    img.src = "https://image.tmdb.org/t/p/original" + item.poster_path;
+    name.innerHTML = item.title;
+    genre.innerHTML = genreTitles.join(", ");
+    rating.innerHTML = item.vote_average;
+
+    let hoverBg = document.createElement("div");
+    let hoverBtn = document.createElement("button");
+
+    hoverBtn.innerHTML = "Карточка фильма";
+    hoverBg.classList.add("hoverBlock");
+
+    block.onmouseenter = () => {
+      hoverBg.classList.add("flex");
+    };
+    block.onmouseleave = () => {
+      hoverBg.classList.remove("flex");
+    };
+
+    hoverBg.onclick = () => {
+      location.assign(`/pages/aboutMovie/?movie_id=${item.id}`);
+    };
+
+    place.append(mainBlock);
+    mainBlock.append(block);
+    block.append(img, hoverBg, ratingBlock, name, genre);
+    ratingBlock.append(rating);
+    hoverBg.append(hoverBtn);
+  }
 };
