@@ -69,9 +69,15 @@ export function reload_movies(arr, place, genres, bg, plite) {
       ratingBlock.classList.add("ratingBlock");
       rating.classList.add("rating");
 
-      img.src = "https://image.tmdb.org/t/p/original" + item.poster_path;
-      name.innerHTML = item.title;
-      genre.innerHTML = genreTitles.join(", ");
+      item.poster_path
+        ? (img.src = "https://image.tmdb.org/t/p/original" + item.poster_path)
+        : (img.src = "/movie_placeholder.jpg");
+      item.title.length <= 20
+        ? (name.innerHTML = item.title)
+        : (name.innerHTML = item.title.slice(0, 20) + " ...");
+      genreTitles.join(", ").length <= 20
+        ? (genre.innerHTML = genreTitles.join(", "))
+        : (genre.innerHTML = genreTitles.join(", ").slice(0, 20) + " ...");
       rating.innerHTML = item.vote_average;
 
       bg.style.backgroundImage =
@@ -126,9 +132,15 @@ export function reload_movies(arr, place, genres, bg, plite) {
       rating.classList.add("rating");
       mainBlock.classList.add("swiper-slide");
 
-      img.src = "https://image.tmdb.org/t/p/original" + item.poster_path;
-      name.innerHTML = item.title;
-      genre.innerHTML = genreTitles.join(", ");
+      item.poster_path
+        ? (img.src = "https://image.tmdb.org/t/p/original" + item.poster_path)
+        : (img.src = "/movie_placeholder.jpg");
+      item.title.length <= 20
+        ? (name.innerHTML = item.title)
+        : (name.innerHTML = item.title.slice(0, 20) + " ...");
+      genreTitles.join(", ").length <= 20
+        ? (genre.innerHTML = genreTitles.join(", "))
+        : (genre.innerHTML = genreTitles.join(", ").slice(0, 20) + " ...");
       rating.innerHTML = item.vote_average;
       bg.style.backgroundImage =
         "url(https://image.tmdb.org/t/p/original" + arr[0].backdrop_path + ")";
@@ -224,7 +236,9 @@ export const trailers = (arr, place) => {
 
     img.src = "https://image.tmdb.org/t/p/original" + item.backdrop_path;
     icon.src = "/public/img/trailersArrow.svg";
-    title.innerHTML = item.title;
+    item.title.length < 20
+      ? (title.innerHTML = item.title)
+      : (title.innerHTML = item.title.slice(0, 20) + " ...");
 
     icon.onclick = () => {
       let iframe = document.querySelector("#mainFrame");
@@ -270,10 +284,20 @@ export const search_reload_movies = (arr, place, genres) => {
     genresP.classList.add("genres");
     right.classList.add("right");
 
-    img.src = "https://image.tmdb.org/t/p/original" + poster_path;
-    title.innerHTML = item.title || "Movie";
-    originTitle.innerHTML = item.original_title || "None";
-    genresP.innerHTML = genreTitles.join(", ");
+    item.poster_path
+      ? (img.src = "https://image.tmdb.org/t/p/original" + item.poster_path)
+      : (img.src = "/movie_placeholder.jpg");
+
+    item.title.length <= 50
+      ? (title.innerHTML = item.title || "Movie")
+      : (title.innerHTML = item.title.slice(0, 50) + " ..." || "Movie");
+    item.original_title.length <= 50
+      ? (originTitle.innerHTML = item.original_title || "None")
+      : (originTitle.innerHTML =
+          item.original_title.slice(0, 50) + " ..." || "None");
+    genreTitles.join(", ").length <= 50
+      ? (genresP.innerHTML = genreTitles.join(", "))
+      : (genresP.innerHTML = genreTitles.join(", ").slice(0, 50) + " ...");
     rating.innerHTML = item.vote_average;
 
     place.append(block);
@@ -307,7 +331,10 @@ export const search_reload_actors = (arr, place) => {
     desc.classList.add("genres");
     right.classList.add("right");
 
-    img.src = "https://image.tmdb.org/t/p/original" + item.profile_path;
+    item.profile_path
+      ? (img.src = "https://image.tmdb.org/t/p/original" + item.profile_path)
+      : (img.src = "/placeholder.jpg");
+
     title.innerHTML = item.name || "Actor";
     originTitle.innerHTML = item.original_name || "None";
 
@@ -370,7 +397,7 @@ export const other_actors_reload = (arr, place, details, status) => {
     name.innerHTML = arr[idx].name;
     original_name.innerHTML = arr[idx].original_name;
     actor_status.innerHTML = status;
-    let actor_age = details[idx]
+    let actor_age = details[idx].birthday
       ? new Date().getFullYear() - details[idx].birthday.split("-")[0]
       : "?";
     age.innerHTML = actor_age + " лет";
@@ -438,7 +465,6 @@ export const movieInf = (movie, place, bg) => {
 };
 
 export const aboutMovie = (object, place, credits) => {
-  place.innerHTML = "";
   let div1 = document.createElement("div");
   let title1 = document.createElement("p");
   let div2 = document.createElement("div");
@@ -570,9 +596,12 @@ export const aboutMovieActors = (arr, place) => {
     let name = document.createElement("h3");
     let orig_name = document.createElement("p");
     let movie_name = document.createElement("h4");
-
     block.classList.add("actor_block");
-    img.src = "https://image.tmdb.org/t/p/original" + item.profile_path;
+
+    item.profile_path
+      ? (img.src = "https://image.tmdb.org/t/p/original" + item.profile_path)
+      : (img.src = "/placeholder.jpg");
+
     name.innerHTML = item.name;
     orig_name.innerHTML = item.original_name;
     movie_name.innerHTML = item.character;
@@ -622,7 +651,9 @@ export const aboutMovieSameMovies = (arr, place, genres) => {
     mainBlock.classList.add("swiper-slide");
 
     img.src = "https://image.tmdb.org/t/p/original" + item.poster_path;
-    name.innerHTML = item.title;
+    item.title.length <= 10
+      ? (name.innerHTML = item.title)
+      : (name.innerHTML = item.title.slice(0, 10) + " ...");
     genre.innerHTML = genreTitles.join(", ");
     rating.innerHTML = item.vote_average;
 

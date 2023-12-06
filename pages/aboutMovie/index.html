@@ -34,22 +34,10 @@
       </section>
       <section class="sec2">
         <div class="top2"></div>
-        <div class="bottom2">
-          <div id="first"></div>
-          <div id="second"></div>
-          <div id="third">
-            <h3>Производство:</h3>
-            <div></div>
-          </div>
-          <div id="four">
-            <h3>Спецэффекты:</h3>
-            <div></div>
-          </div>
-        </div>
       </section>
       <section class="sec3">
         <div class="top2">
-          <div class="title">В главных ролях:</div>
+          <h2 class="title">В главных ролях:</h2>
           <div>
             <p>Все актёры</p>
             <img src="../../public/img/sec1.svg" alt="" />
@@ -139,7 +127,7 @@
       <section class="sec6">
         <div class="content">
           <div class="top">
-            <img src="./public/logo.svg" alt="logo" />
+            <img src="/public/logo.svg" alt="logo" />
             <p>Kinoarea</p>
           </div>
           <div class="bottom">
@@ -190,7 +178,29 @@
       <p>2020 © Kinoarea. Все права защищены</p>
       <a href="#">Политика конфиденциальности</a>
     </footer>
-
+    <div class="searchModals">
+      <div class="bg"></div>
+      <div class="content">
+        <div class="top">
+          <img src="/public/logo.svg" alt="logo" />
+          <h2 class="title"><span>Kino</span>area</h2>
+        </div>
+        <div class="search">
+          <input type="text" placeholder="Название интересующихся фильмов" />
+          <div>
+            <a href="#"><img src="/public/img/search.svg" alt="settings" /></a>
+            <a id="search" href="#"
+              ><img src="/public/img/headerRight.svg" alt="search"
+            /></a>
+          </div>
+        </div>
+        <div>
+          <div class="answers"></div>
+          <div class="actors"></div>
+        </div>
+      </div>
+      <p class="off">&times;</p>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="./index.js"></script>
   </body>

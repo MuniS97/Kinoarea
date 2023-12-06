@@ -103,6 +103,18 @@ Promise.all([
   getMovieData(`/movie/${movies.data.results[0].id}/videos`).then((res) => {
     iframe.src = "https://www.youtube.com/embed/" + res.data.results[0].key;
     tralerTitle.innerHTML = res.data.results[0].name;
+
+    let min_trailers = document.querySelectorAll(".sec1 .otherMovies div");
+    let trailer_position = iframe.offsetTop;
+    min_trailers.forEach((min_trailer) => {
+      min_trailer.onclick = () => {
+        window.scrollTo({
+          top: trailer_position - 100,
+          left: 0,
+          behavior: "smooth",
+        });
+      };
+    });
   });
 
   // filter popular movies by years
@@ -256,7 +268,6 @@ searchInp.onkeyup = () => {
 let person_details = [];
 getMovieData("/person/popular?language=ru").then((res) => {
   if (res.status !== 200 && res.status !== 201) return;
-  console.log(res);
   getMovieData(`/person/${res.data.results[0].id}`).then((detail) => {
     if (detail.status !== 200 && detail.status !== 201) return;
     top_two_actors_reload(
@@ -279,14 +290,14 @@ getMovieData("/person/popular?language=ru").then((res) => {
     getMovieData(`/person/${person.id}`).then((detail) => {
       if (detail.status !== 200 && detail.status !== 201) return;
       person_details.push(detail.data);
-        if (Boolean(person_details.push(detail.data))) {
-          other_actors_reload(
-            res.data.results.slice(2),
-            other_actors,
-            person_details,
-            "?-й место"
-          );
-        }
+      if (Boolean(person_details.push(detail.data))) {
+        other_actors_reload(
+          res.data.results.slice(2),
+          other_actors,
+          person_details,
+          "?-й место"
+        );
+      }
     });
   });
 });
