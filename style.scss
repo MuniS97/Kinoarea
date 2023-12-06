@@ -213,6 +213,7 @@ main {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      white-space: nowrap;
       &::-webkit-scrollbar {
         width: 5px;
       }
@@ -329,7 +330,7 @@ main {
   }
   .btn-show-all {
     cursor: pointer;
-    margin: 50px 0;
+    margin: 100px 0 50px;
     width: 200px;
     height: 71px;
     border-radius: 14px;
@@ -487,6 +488,8 @@ main {
           }
         }
         p {
+          margin-bottom: 20px;
+          white-space: nowrap;
           color: #fff;
           font-size: 20px;
           font-weight: 900;
@@ -495,6 +498,7 @@ main {
     }
   }
   .sec2 {
+    padding: 50px 0;
     .top {
       display: flex;
       justify-content: space-between;
@@ -633,7 +637,7 @@ main {
         .swiper-pagination {
           z-index: -1;
           position: absolute;
-          bottom: 5%;
+          bottom: 0%;
           color: #fff;
           font-size: 20px;
           font-weight: 500;
@@ -642,7 +646,7 @@ main {
     }
   }
   .sec3 {
-    margin: 100px 0;
+    margin: 50px 0;
     .top {
       margin-bottom: 50px;
       display: flex;
@@ -1011,6 +1015,7 @@ main {
     }
   }
   .sec6 {
+    margin: 200px 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
