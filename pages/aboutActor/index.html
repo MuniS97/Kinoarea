@@ -6,12 +6,114 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.scss" />
     <link rel="stylesheet" href="../../style.scss" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <header class="container"></header>
     <main class="container">
       <div class="actor"></div>
+      <section class="actor_sec1">
+        <div class="swiper mySwiper">
+          <div class="top">
+            <h2 class="title">Ожидаемые новинки</h2>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-wrapper" id="upcoming"></div>
+        </div>
+      </section>
+      <section class="actor_sec2">
+        <div class="top2">
+          <h2 class="title">Фото</h2>
+          <div>
+            <p>Все фото</p>
+            <img src="../../public/img/sec1.svg" alt="" />
+          </div>
+        </div>
+        <div class="posters"></div>
+      </section>
+      <section class="sec6">
+        <div class="content">
+          <div class="top">
+            <img src="/public/logo.svg" alt="logo" />
+            <p>Kinoarea</p>
+          </div>
+          <div class="bottom">
+            <h2>Подпишитесь на E-mail рассылку</h2>
+            <p>
+              Если хотиет быть в курсе последних новостей и новинок кино -
+              <br />
+              заполните форму ниже и оформите бесплатную E-mail рассылку!
+            </p>
+            <form name="subs">
+              <div id="div-1">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Введите свой E-mail адрес"
+                />
+                <button>Подписаться</button>
+              </div>
+              <div id="div-2">
+                <input type="radio" />
+                <p>
+                  Соглашаюсь на условия <span>политики конфиденциальности</span>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
+    <footer>
+      <div class="socials">
+        <img src="../../public/img/headerLeft (1).svg" alt="social" />
+        <img src="../../public/img/headerLeft (3).svg" alt="social" />
+        <img src="../../public/img/headerLeft (5).svg" alt="social" />
+        <img src="../../public/img/headerLeft (6).svg" alt="social" />
+        <img src="../../public/img/youtube.svg" alt="social" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Афиша</a></li>
+          <li><a href="#">Новости</a></li>
+          <li><a href="#">Персоны</a></li>
+          <li><a href="#">Рейтинги</a></li>
+          <li><a href="#">Рецензии</a></li>
+          <li><a href="#">Каталог фильмов</a></li>
+        </ul>
+      </nav>
+      <p>2020 © Kinoarea. Все права защищены</p>
+      <a href="#">Политика конфиденциальности</a>
+    </footer>
+    <div class="searchModals">
+      <div class="bg"></div>
+      <div class="content">
+        <div class="top">
+          <img src="/public/logo.svg" alt="logo" />
+          <h2 class="title"><span>Kino</span>area</h2>
+        </div>
+        <div class="search">
+          <input type="text" placeholder="Название интересующихся фильмов" />
+          <div>
+            <a href="#"><img src="/public/img/search.svg" alt="settings" /></a>
+            <a id="search" href="#"
+              ><img src="/public/img/headerRight.svg" alt="search"
+            /></a>
+          </div>
+        </div>
+        <div>
+          <div class="answers"></div>
+          <div class="actors"></div>
+        </div>
+      </div>
+      <p class="off">&times;</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

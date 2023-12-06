@@ -307,7 +307,7 @@ export const search_reload_movies = (arr, place, genres) => {
     right.append(rating);
 
     block.onclick = () => {
-      location.assign(`../pages/aboutMovie/?movie_id=${item.id}`);
+      location.assign(`/pages/aboutMovie/?movie_id=${item.id}`);
     };
   }
 };
@@ -346,6 +346,10 @@ export const search_reload_actors = (arr, place) => {
     left.append(img, leftInf);
     leftInf.append(title, originTitle, desc);
     right.append(rating);
+
+    block.onclick = () => {
+      location.assign("/pages/aboutActor/?actor_id=" + item.id);
+    };
   }
 };
 
@@ -650,10 +654,11 @@ export const aboutMovieSameMovies = (arr, place, genres) => {
     rating.classList.add("rating");
     mainBlock.classList.add("swiper-slide");
 
-    img.src = "https://image.tmdb.org/t/p/original" + item.poster_path;
-    item.title.length <= 10
-      ? (name.innerHTML = item.title)
-      : (name.innerHTML = item.title.slice(0, 10) + " ...");
+    item.poster_path
+      ? (img.src = "https://image.tmdb.org/t/p/original" + item.poster_path)
+      : (img.src = "/movie_placeholder.jpg");
+
+    name.innerHTML = item.title;
     genre.innerHTML = genreTitles.join(", ");
     rating.innerHTML = item.vote_average;
 
@@ -683,48 +688,79 @@ export const aboutMovieSameMovies = (arr, place, genres) => {
 };
 
 export const actorInf = (actor, place) => {
-  console.log(actor);
-  let topBlock = document.createElement("div");
+  place.innerHTML = "";
   let img = document.createElement("img");
-  let topInfBlock = document.createElement("div");
+  let actorInf = document.createElement("div");
   let way = document.createElement("p");
-  let title = document.createElement("h1");
-  let origTitle = document.createElement("h2");
-  let rating = document.createElement("p");
-  let desc = document.createElement("p");
-  let infBottomBlock = document.createElement("div");
-  let btn = document.createElement("button");
-  let socials = document.createElement("div");
-  let img1 = document.createElement("img");
-  let img2 = document.createElement("img");
-  let img3 = document.createElement("img");
-  let img4 = document.createElement("img");
+  let name = document.createElement("h2");
+  let div = document.createElement("div");
+  let orig_name = document.createElement("p");
+  let div_img1 = document.createElement("img");
+  let div_img2 = document.createElement("img");
+  let actor_inf = document.createElement("p");
+  let actor_career = document.createElement("p");
+  let actor_height = document.createElement("p");
+  let actor_age = document.createElement("p");
+  let actor_birthplace = document.createElement("p");
+  let actor_gender = document.createElement("p");
+  let actor_movies = document.createElement("p");
+  let btn_div = document.createElement("div");
+  let btn_img = document.createElement("img");
 
-  topBlock.classList.add("topBlock");
-  topInfBlock.classList.add("topInfBlock");
+  actorInf.classList.add("actor_inf");
   way.classList.add("way");
-  title.classList.add("title");
-  origTitle.classList.add("origTitle");
-  rating.classList.add("rating");
-  desc.classList.add("desc");
-  infBottomBlock.classList.add("infBottomBlock");
-  socials.classList.add("socials");
+  name.classList.add("name");
+  btn_div.classList.add("btn");
+  div.classList.add("min_div");
 
-  img.src = "https://image.tmdb.org/t/p/original" + actor.profile_path;
-  way.innerHTML = `Главная > Фильмы > <span>${actor.name}</span>`;
-  title.innerHTML = actor.name;
-  origTitle.innerHTML = actor.name;
-  rating.innerHTML = `Рейтинг : ${actor.popularity}`;
-  desc.innerHTML = actor.biography;
-  btn.innerHTML = "Смотреть трейлер";
-  img1.src = "/public/img/headerLeft (1).svg";
-  img2.src = "/public/img/headerLeft (3).svg";
-  img3.src = "/public/img/headerLeft (5).svg";
-  img4.src = "/public/img/headerLeft (6).svg";
+  actor.profile_path
+    ? (img.src = "https://image.tmdb.org/t/p/original" + actor.profile_path)
+    : (img.src = "/placeholder.jpg");
+  way.innerHTML = `Главная > Актёры > <b>${actor.name}</b>`;
+  name.innerHTML = actor.name;
+  orig_name.innerHTML = actor.name;
+  div_img1.src = "/public/img/headerLeft (5).svg";
+  div_img2.src = "/public/img/headerLeft (6).svg";
+  actor.biography
+    ? (actor_inf.innerHTML = `Информация: <b>${actor.biography.slice(
+        0,
+        200
+      )} ...</b>`)
+    : (actor_inf.innerHTML = `Информация: <b>нет информации</b>`);
+  actor.known_for_department
+    ? (actor_career.innerHTML = `Карьера: <b>${actor.known_for_department}</b>`)
+    : (actor_career.innerHTML = `Карьера: <b>нет информации</b>`);
+  actor_height.innerHTML = "Рост: <b>нет информации</b>";
+  actor.birthday
+    ? (actor_age.innerHTML = `Дата рождения: <b>${
+        new Date().getFullYear() - actor.birthday.split("-")[0]
+      } лет</b>`)
+    : (actor_age.innerHTML = `Дата рождения: <b>? лет</b>`);
+  actor.place_of_birth
+    ? (actor_birthplace.innerHTML = `Место рождения: <b>${actor.place_of_birth}</b>`)
+    : (actor_birthplace.innerHTML = "Место рождения: <b>нет информации</b>");
+  if (actor.gender === 1) {
+    actor_gender.innerHTML = "Пол: <b>Женшина</b>";
+  } else {
+    actor_gender.innerHTML = "Пол: <b>Мужчина</b>";
+  }
+  actor_movies.innerHTML = "Все фильмов: <b>нет информации</b>";
+  btn_img.src = "/public/img/heart 1.svg";
 
-  place.append(topBlock);
-  topBlock.append(img, topInfBlock);
-  topInfBlock.append(way, title, origTitle, rating, desc, infBottomBlock);
-  infBottomBlock.append(btn, socials);
-  socials.append(img1, img2, img3, img4);
+  place.append(img, actorInf);
+  actorInf.append(
+    way,
+    name,
+    div,
+    actor_inf,
+    actor_career,
+    actor_height,
+    actor_age,
+    actor_birthplace,
+    actor_gender,
+    actor_movies,
+    btn_div
+  );
+  div.append(orig_name, div_img1, div_img2);
+  btn_div.append(btn_img);
 };
