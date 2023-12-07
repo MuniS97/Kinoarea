@@ -1,0 +1,145 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  .dash_board {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 110px;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 110px;
+      height: 110px;
+      border-radius: 10px;
+      background: #3657cb;
+      transition: 1s ease;
+      cursor: pointer;
+      &:hover {
+        background-color: black;
+      }
+      img {
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+      }
+    }
+  }
+  .content {
+    width: 100%;
+    border-radius: 10px;
+    background: #191e2e;
+    .top {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .title {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 900;
+      }
+      a {
+        width: 147.531px;
+        height: 51.535px;
+        border-radius: 10px;
+        background: #1e2538;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        img {
+          width: 20px;
+          height: 20px;
+          object-fit: cover;
+        }
+      }
+    }
+    .inf {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
+      gap: 50px;
+      img {
+        width: 500px;
+        object-fit: cover;
+        border-radius: 14px;
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        gap: 10px;
+        .name {
+          color: #fff;
+          font-size: 50px;
+          font-weight: 900;
+        }
+        .socials {
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          gap: 10px;
+          img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+          }
+        }
+        p {
+          max-width: 500px;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 17px;
+          font-weight: 400;
+        }
+        h3 {
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 18px;
+          font-weight: 600;
+          span {
+            color: #f2f60f;
+            font-size: 18px;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+  .bottom {
+    padding: 50px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      h4 {
+        color: #323a55;
+        font-size: 35px;
+        font-weight: 500;
+      }
+      p {
+        color: #323a55;
+        font-size: 21px;
+        font-weight: 700;
+      }
+    }
+    .chose {
+        color: #fff;
+    }
+  }
+}
