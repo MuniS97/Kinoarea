@@ -38,7 +38,7 @@ export function header_create(place) {
           ><div class="search">
             <img src="/public/img/headerRight.svg" alt="search_icon" /></div
         ></a>
-       <a href="/pages/login/"><button class="btn-donate">Войти</button></a>
+       <a href="/pages/profile/"><button class="btn-donate">Войти</button></a>
       </div>
       `;
 }
